@@ -4,7 +4,6 @@ number = 361527
 
 square_size = math.sqrt(number)
 
-print "-- %d --" % number
 prev_square = int(square_size)
 if(not number % square_size):
 	prev_square -= 1
