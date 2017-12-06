@@ -1,7 +1,3 @@
-import time
-
-start = time.time()
-
 with open('input.txt', 'r') as f:
     content = f.read().split('\t')
 
@@ -30,6 +26,3 @@ while not done:
 
 	for x in range(1, dataamount + 1):
 		memory_banks[(startpos + x) % len(memory_banks)] += 1
-
-end = time.time()
-print(end - start)
