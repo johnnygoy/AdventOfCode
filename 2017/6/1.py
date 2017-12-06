@@ -1,35 +1,35 @@
-fname = 'input.txt'
-with open(fname) as f:
-    content = f.readlines()
+import time
 
-total = 0
-for l in content:
-    vals = l.strip().split("\t")
+start = time.time()
 
-intvals = []
-for val in vals:
-	intvals.append(int(val))
+with open('input.txt', 'r') as f:
+    content = f.read().split('\t')
+
+memory_banks = [int(x) for x in content]
 
 configs = []
 done = False
 while not done:
 
-	if(configs.count(str(intvals)) == 0):
-		configs.append(str(intvals))
+	if(str(memory_banks) not in configs):
+		configs.append(str(memory_banks))
 	else:
 		done = True
-		print "Done: %d, %d" % (len(configs), len(configs) - configs.index(str(intvals)))
+		print "Done: %d, %d" % (len(configs), len(configs) - configs.index(str(memory_banks)))
 
-	maxval = max(intvals)
+	maxval = max(memory_banks)
 	startpos = 0
 	
-	for i in range(0,len(intvals)):
-		if(intvals[i] == maxval):
+	for i in range(0,len(memory_banks)):
+		if(memory_banks[i] == maxval):
 			startpos = i
 			break
 	
-	dataamount = intvals[startpos]
-	intvals[startpos] = 0
+	dataamount = memory_banks[startpos]
+	memory_banks[startpos] = 0
 
 	for x in range(1, dataamount + 1):
-		intvals[(startpos + x) % len(intvals)] += 1
+		memory_banks[(startpos + x) % len(memory_banks)] += 1
+
+end = time.time()
+print(end - start)
