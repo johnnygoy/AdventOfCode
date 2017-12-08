@@ -21,19 +21,7 @@ for line in content:
     instructions.append(instruction)
 
 for instruction in instructions:
-    comparison = False
-    if(instruction['comparison'] == '=='):
-        comparison = registers[instruction['register_to_compare']] == instruction['compare_to']
-    elif (instruction['comparison'] == '>='):
-        comparison = registers[instruction['register_to_compare']] >= instruction['compare_to']
-    elif (instruction['comparison'] == '>'):
-        comparison = registers[instruction['register_to_compare']] > instruction['compare_to']
-    elif (instruction['comparison'] == '<'):
-        comparison = registers[instruction['register_to_compare']] < instruction['compare_to']
-    elif (instruction['comparison'] == '<='):
-        comparison = registers[instruction['register_to_compare']] <= instruction['compare_to']
-    elif (instruction['comparison'] == '!='):
-        comparison = registers[instruction['register_to_compare']] != instruction['compare_to']
+    comparison = eval(str(registers[instruction['register_to_compare']]) + instruction['comparison'] + str(instruction['compare_to']))
 
     if(comparison):
         registers[instruction['register']] += instruction['amount']
