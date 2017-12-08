@@ -44,5 +44,5 @@ for instruction in instructions:
 
 max_val = max(registers, key=registers.get)
 
-print "Final max: %d" % registers[max_val]
-print "Running max: %d" %  running_max_val
+print("Final max: %d" % registers[max_val])
+print("Running max: %d" % running_max_val)
