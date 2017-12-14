@@ -1,8 +1,30 @@
 def main():
-    with open('input.txt', 'r') as f:
-        content = f.read().strip()
+	hash_input = "nbysizxe"
+	test_hash_input = "flqrgnkx"
 
-    print get_knot_hash(content)
+	used_input = hash_input
+
+	rows = []
+	for i in range(0, 128):
+		row = used_input + "-" + str(i)
+		row = get_knot_hash(row)
+		complete_row = ''
+		for c in row:
+			complete_row += hex_to_bin(c)
+		rows.append(complete_row)
+
+	total = 0
+	for row in rows:
+		total += row.count('1')
+	
+	print total
+
+
+def hex_to_bin(hex):
+	scale = 16 ## equals to hexadecimal
+	num_of_bits = 4
+
+	return bin(int(hex, scale))[2:].zfill(num_of_bits)
 
 
 def get_hex_str(intval):
@@ -69,5 +91,6 @@ def get_knot_hash(string_to_hash):
         final_hash += get_hex_str(i)
 
     return final_hash
+
 
 main()
