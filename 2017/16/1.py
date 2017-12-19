@@ -42,7 +42,6 @@ def spin(x):
 	neworder = line[-x:]
 	neworder.extend(line[:-x])
 	line = neworder
-	
 
 
 def exchange(pos_a, pos_b):

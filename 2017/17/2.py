@@ -6,10 +6,9 @@ def main():
 	last_value_after_zero = 0
 
 	for i in range(50000000):
-		next_position = (current_position + steps) % length
+		next_position = (next_position + steps) % (i + 1)
 		if(next_position == 0):
-			last_value_after_zero = i+1
-		length += 1
+			last_value_after_zero = i + 1
 		current_position = next_position + 1
 
 	print last_value_after_zero
